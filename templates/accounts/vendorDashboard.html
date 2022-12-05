@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>vendor dashboard</h1>
+{{user.username}}
+{{user.get_role}}
+
+{% include 'includes/alerts.html' %}
+
+{% endblock %}
