@@ -40,11 +40,16 @@
                                 <li>
                                     <a href="#" class="reviews-sortby-active">
                                         <span>Today :</span>
+                                        {% for i in current_opening_hours %}
+                                        <span>{% if i.is_closed %}Closed{% else %}{{ i.from_hour }} - {{ i.to_hour }}{% endif %}</span>
                                         
+                                        {% endfor %}
                                         <i class="icon-chevron-small-down"></i>
                                     </a>
                                     <ul class="delivery-dropdown">
-                                
+                                        {% for hour in opening_hours %}
+                                        <li><a href="#"><span class="opend-day">{{ hour }}</span> <span class="opend-time"><small>:</small>{% if hour.is_closed %}Closed{% else %}{{ hour.from_hour }} - {{ hour.to_hour }}{% endif %}</span></a></li>
+                                        {% endfor %}
                                     </ul>
                                 </li>
                             </ul>
@@ -117,7 +122,11 @@
                                     </div>
 
                                     {% for item in cart_items %}
+
                                     <span id="qty-{{item.fooditem.id}}" class="item_qty d-none" data-qty="{{ item.quantity }}">{{ item.quantity }}</span>
+
+                                    
+
                                     {% endfor %}
                                 </div>
                             </div>
