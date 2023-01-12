@@ -26,7 +26,7 @@
                                             Total Orders
                                         </div>
                                         <div class="card-body text-center">
-                                            
+                                            <a href="#"><h5 class="card-title">{{ orders_count }}</h5></a>
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                             Total Revenue
                                         </div>
                                         <div class="card-body text-center">
-                                            
+                                            <a href="#"><h5 class="card-title">${{total_revenue | floatformat:2}}</h5></a>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                             This Month
                                         </div>
                                         <div class="card-body text-center">
-                                            
+                                            <a href="#"><h5 class="card-title">${{ current_month_revenue | floatformat:2}}</h5></a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,16 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  
+                                                    {% for order in recent_orders %}
+                                                  <tr>
+                                                    <td>{{ order.order_number }}</td>
+                                                    <td>{{ order.name }}</td>
+                                                    <td>${{ order.get_total_by_vendor.grand_total }}</td>
+                                                    <td>{{ order.status }}</td>
+                                                    <td>{{ order.created_at }}</td>
+                                                    <td><a href="{% url 'vendor_order_detail' order.order_number %}" class="btn btn-danger">Details</a></td>
+                                                  </tr>
+                                                  {% endfor %}
                                                 </tbody>
                                               </table>
                                         </div>												
@@ -87,5 +96,6 @@
     </div>
 </div>
 <!-- Main Section End -->
+
 
 {% endblock %}
