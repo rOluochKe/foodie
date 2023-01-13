@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -183,3 +183,6 @@ if DEBUG == True:
 PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+
+RZP_KEY_ID = config('RZP_KEY_ID')
+RZP_KEY_SECRET = config('RZP_KEY_SECRET')
